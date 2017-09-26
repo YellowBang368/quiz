@@ -1,5 +1,5 @@
-require "./methods.rb"
-
+require "./ResultPrinter.rb"
+require "./Quiz.rb"
 puts "Пожалуйста отвечайте следующим образом:"
 puts "1.Да"
 puts "2.Нет"
