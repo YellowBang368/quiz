@@ -28,7 +28,7 @@ class Quiz
     GOOD_CHOICES.include?(choice)
   end
 
-  def check_for_amount_of_points(choice)
+  def amount_of_points(choice)
     if is_good?(choice)
       return 1 if choice == "3" #Ответ "Иногда"
       return 2 if choice == "1" #Ответ "Да"
@@ -47,7 +47,7 @@ class Quiz
       puts @questions[0]
       @questions.delete_at(0)
       choice = STDIN.gets.chomp
-      points += check_for_amount_of_points(choice).to_i # Прибавляем набранные очки
+      points += amount_of_points(choice).to_i # Прибавляем набранные очки
     end
     @points = points # Записываем результат
   end
