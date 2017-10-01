@@ -1,6 +1,9 @@
 class Quiz
+  attr_reader :points
+  GOOD_CHOICES = ["1", "2", "3"]
+
   def initialize
-  @QUESTIONS = [
+  @questions = [
     "1. Переживаете ли вы в ожидании важной деловой встречи?",
     "2. Если вам поручат выступить с докладом на каком либо мероприятии, вызовет ли это у вас чувство дискомфорта?",
     "3. Вы откладываете поход к врачу до последнего момента?",
@@ -21,28 +24,32 @@ class Quiz
   @points = 0
   end
 
+  def is_good?(choice) # Проверка ответа на адекватность
+    GOOD_CHOICES.include?(choice)
+  end
+
+  def check_for_amount_of_points(choice)
+    if is_good?(choice)
+      return 1 if choice == "3" #Ответ "Иногда"
+      return 2 if choice == "1" #Ответ "Да"
+      return 0 if choice == "2" #Ответ "Нет"
+    else
+      until is_good?(choice)
+        puts "Ошибка: " + choice.to_s
+        choice = STDIN.gets.chomp
+      end
+    end
+  end
+
   def start
-  points = 0
-  while !@QUESTIONS.empty?
-    puts @QUESTIONS[0]
-    @QUESTIONS.delete_at(0)
-    choice = STDIN.gets.chomp
-
-    while !["1", "2", "3"].include? choice # Проверка на адекватность ответа
-    puts "Ошибка: #{choice}"
-    choice = STDIN.gets.chomp.downcase
+    points = 0
+    until @questions.empty?
+      puts @questions[0]
+      @questions.delete_at(0)
+      choice = STDIN.gets.chomp
+      points += check_for_amount_of_points(choice).to_i # Прибавляем набранные очки
     end
-
-    if choice == "1"
-    points += 2
-    elsif choice == "3"
-    points += 1
-    end
-  end
-  @points = points # Записываем результат
+    @points = points # Записываем результат
   end
 
-  def get_points
-  @points
-  end
 end

@@ -1,7 +1,8 @@
 class ResultPrinter
+  attr_reader :result
   def initialize
     @result = nil
-    @FEEDBACK = [
+    @feedback = [
         "Что скрывать, вы некоммуникабельны, и страдаете от этого прежде всего сами. " \
     "Но и окружающим очень трудно с вами, ведь там, где необходимы совместные усилия, вы совершенно теряетесь." \
     " Почему вы так неохотно общаетесь? Неужели в вашем окружении совсем нет интересных людей?" \
@@ -30,25 +31,19 @@ class ResultPrinter
     ]
   end
 
-  def check_for(points)
-    if points >= 30
-      @result = 0
-    elsif points >= 25
-      @result = 1
-    elsif points >= 19
-      @result = 2
-    elsif points >= 14
-      @result = 3
-    elsif points >= 9
-      @result = 4
-    elsif points >= 4
-      @result = 5
-    elsif points < 4
-      @result = 6
+  def check_for_result(points)
+    case points
+    when 30..32 then @result = 0
+    when 25..29 then @result = 1
+    when 19..24 then @result = 2
+    when 14..19 then @result = 3
+    when 9..13 then @result = 4
+    when 4..8 then @result = 5
+    when 0..3 then @result = 6
     end
   end
 
   def show
-    puts @FEEDBACK[@result]
+    @feedback[@result.to_i]
   end
 end

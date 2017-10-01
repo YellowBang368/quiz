@@ -8,5 +8,7 @@ puts "3.Иногда"
 quiz = Quiz.new
 quiz.start
 printer = ResultPrinter.new
-printer.check_for(quiz.get_points)
-printer.show
+printer.check_for_result(quiz.points)
+puts quiz.points
+puts printer.result
+puts printer.show
