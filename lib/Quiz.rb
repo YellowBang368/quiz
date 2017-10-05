@@ -51,5 +51,4 @@ class Quiz
     end
     @points = points # Записываем результат
   end
-
 end
