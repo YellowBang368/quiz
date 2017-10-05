@@ -1,5 +1,5 @@
-require "./ResultPrinter.rb"
-require "./Quiz.rb"
+require_relative "/lib/ResultPrinter.rb"
+require_relative "/lib/Quiz.rb"
 puts "Пожалуйста отвечайте следующим образом:"
 puts "1.Да"
 puts "2.Нет"
