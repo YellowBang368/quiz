@@ -1,4 +1,4 @@
-require_relative "/lib/quiz/quiz/lib/resultprinter.rb"
+require_relative "/lib/quiz/quiz/lib/result_printer.rb"
 require_relative "/lib/quiz/quiz/lib/quiz.rb"
 puts "Пожалуйста отвечайте следующим образом:"
 puts "1.Да"
